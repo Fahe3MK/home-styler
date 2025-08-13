@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeStyler - Discover Home Interiors</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="HomeStyler/css/style.css" />
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200');
+      background-size: cover;
+      background-position: center;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Fade-in animation for cards */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInCard 0.7s forwards;
+    }
+    @keyframes fadeInCard {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Bounce effect for product images */
+    .product-hover img {
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .product-hover:hover img {
+      transform: scale(1.08) translateY(-8px);
+      animation: bounce 0.4s;
+    }
+    @keyframes bounce {
+      0% { transform: scale(1.08) translateY(-8px); }
+      50% { transform: scale(1.15) translateY(-16px); }
+      100% { transform: scale(1.08) translateY(-8px); }
+    }
+    /* Smooth transition for 'No results found' */
+    .no-results-msg {
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .no-results-msg.show {
+      opacity: 1;
+    }
+    .hero h1 {
+      font-weight: 900;
+      font-size: 3.5rem;
+      animation: fadeInDown 1.2s ease forwards;
+      opacity: 0;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.8s ease forwards;
+      opacity: 0;
+    }
+    .search-bar input {
+      border-radius: 50px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      font-size: 1.1rem;
+      transition: box-shadow 0.3s ease;
+    }
+    .search-bar input:focus {
+      box-shadow: 0 0 8px #2a9d8f;
+      outline: none;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(42, 157, 143, 0.4);
+      z-index: 10;
+    }
+    .card-img-top {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+    .card-body h5 {
+      font-weight: 700;
+      color: #264653;
+    }
+    .card-body p {
+      color: #6c757d;
+    }
+    .card-img-top.rounded-circle {
+      border: 5px solid #2a9d8f;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-img-top.rounded-circle {
+      transform: scale(1.1);
+    }
+    .text-warning {
+      font-size: 1.2rem;
+    }
+    section.bg-light {
+      background: #fefefe;
+    }
+    footer {
+      background: #e9ecef;
+      font-size: 0.9rem;
+      color: #6c757d;
+      letter-spacing: 0.05em;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <img src="HomeStyler/imgs/logo.jpeg" id="logo-img" alt="">
+    <a class="navbar-brand fw-bold" href="index.html">HomeStyler</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeStyler/styles.html">Styles</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeStyler/designers.html">Designers</a></li>
+       <li class="nav-item"><a class="nav-link" href="featured-designs.html">View Featured Designs</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeStyler/products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeStyler/about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="HomeStyler/contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero d-flex align-items-center justify-content-center flex-column">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold"><span id="typedText"></span><span id="typedCursor" style="font-weight:900;">|</span></h1>
+    <p class="lead mb-4" id="typedSub"></p>
+    <div class="search-bar mx-auto" style="max-width:500px;">
+      <input type="text" class="form-control form-control-lg" placeholder="Search designs or products..." id="mainSearch">
+    </div>
+  </div>
+</header>
+
+<!-- 🔘 Popup Buttons -->
+<div class="text-center my-5">
+  <button class="btn btn-outline-dark m-2" id="showFeaturedBtn">View Featured Designs</button>
+  <button class="btn btn-outline-dark m-2" id="showDesignersBtn">View Pakistani Designers</button>
+  <button class="btn btn-outline-dark m-2" id="showProductsBtn">View Browse Products</button>
+
+  <!-- Featured Designs Modal -->
+  <div class="modal fade" id="featuredModal" tabindex="-1" aria-labelledby="featuredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="featuredModalLabel">Featured Designs (Quick View)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4" id="featuredDemoData">
+            <!-- Demo data will be injected here -->
+          </div>
+          <div class="mt-3 text-center">
+            <span>Share: </span>
+            <a href="#" title="Share on Facebook"><i class="fab fa-facebook fa-lg mx-1"></i></a>
+            <a href="#" title="Share on Twitter"><i class="fab fa-twitter fa-lg mx-1"></i></a>
+            <a href="#" title="Share on Pinterest"><i class="fab fa-pinterest fa-lg mx-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- Designers Modal -->
+      <div class="modal fade" id="designersModal" tabindex="-1" aria-labelledby="designersModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="designersModalLabel">Pakistani Designers (Quick View)</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-4" id="designersDemoData">
+                <!-- Demo data will be injected here -->
+              </div>
+              <div class="mt-3 text-center">
+                <span>Share: </span>
+                <a href="#" title="Share on Facebook"><i class="fab fa-facebook fa-lg mx-1"></i></a>
+                <a href="#" title="Share on Twitter"><i class="fab fa-twitter fa-lg mx-1"></i></a>
+                <a href="#" title="Share on Pinterest"><i class="fab fa-pinterest fa-lg mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Products Modal -->
+      <div class="modal fade" id="productsModal" tabindex="-1" aria-labelledby="productsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="productsModalLabel">Browse Products (Quick View)</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-4" id="productsDemoData">
+                <!-- Demo data will be injected here -->
+              </div>
+              <div class="mt-3 text-center">
+                <span>Share: </span>
+                <a href="#" title="Share on Facebook"><i class="fab fa-facebook fa-lg mx-1"></i></a>
+                <a href="#" title="Share on Twitter"><i class="fab fa-twitter fa-lg mx-1"></i></a>
+                <a href="#" title="Share on Pinterest"><i class="fab fa-pinterest fa-lg mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- ...existing code... -->
+</div>
+
+<!-- Original Sections (Keep them) -->
+<!-- Featured Designs -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Featured Designs</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+          <img src="https://cdn.pixabay.com/photo/2016/08/26/15/06/home-1622401_1280.jpg" class="card-img-top" alt="Living Room">
+          <div class="card-body">
+            <h5 class="card-title">Living Room</h5>
+            <p class="card-text text-muted small">Elegant & Cozy</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+          <img src="https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg" class="card-img-top" alt="Kitchen">
+          <div class="card-body">
+            <h5 class="card-title">Kitchen</h5>
+            <p class="card-text text-muted small">Modern & Functional</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+          <img src="https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg" class="card-img-top" alt="Bedroom">
+          <div class="card-body">
+            <h5 class="card-title">Bedroom</h5>
+            <p class="card-text text-muted small">Relax & Refresh</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+          <img src="https://cdn.pixabay.com/photo/2024/07/17/07/26/bathroom-8900752_1280.jpg" class="card-img-top" alt="Bathroom">
+          <div class="card-body">
+            <h5 class="card-title">Bathroom</h5>
+            <p class="card-text text-muted small">Clean & Minimal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pakistani Designers -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Professional Designers from Pakistan</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <img src="https://i.pinimg.com/736x/dd/fc/ac/ddfcac65a67bc5ed50019958e99acfdd.jpg" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px; height:120px; object-fit:cover;" alt="Sadaf Malik">
+          <div class="card-body">
+            <h5 class="card-title">Sadaf Malik</h5>
+            <p class="text-muted small">Modern & Minimalist</p>
+            <p class="text-warning">★★★★★</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px; height:120px; object-fit:cover;" alt="Ali Khan">
+          <div class="card-body">
+            <h5 class="card-title">Ali Khan</h5>
+            <p class="text-muted small">Traditional & Contemporary Fusion</p>
+            <p class="text-warning">★★★★☆</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <img src="https://i.pinimg.com/1200x/1e/5a/e4/1e5ae4c254df31ecd2924c62fe8f4c13.jpg" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px; height:120px; object-fit:cover;" alt="Mariam Shah">
+          <div class="card-body">
+            <h5 class="card-title">Mariam Shah</h5>
+            <p class="text-muted small">Elegant & Classic</p>
+            <p class="text-warning">★★★★★</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Browse Products Section -->
+<style>
+  .product-hover:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+  }
+</style>
+
+<section class="py-5 bg-light" id="featuredDesigns">
+  <div class="container">
+    <h2 class="mb-4 text-center">Browse Products</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/1200x/c1/d8/eb/c1d8eb28966488a9542d5a363088038a.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Furniture</p>
+      </div>
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/736x/33/e5/ea/33e5eafe84e82e9771295ef24b8ef771.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Lighting</p>
+      </div>
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/1200x/d7/ea/8b/d7ea8bfc5d3e3583e447686514c0b871.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Decor</p>
+      </div>
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/1200x/4e/20/f9/4e20f9cdcdbd18674f552dde21d8cf05.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Kitchen</p>
+      </div>
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/736x/4b/f5/4f/4bf54f6a934fdc10083c51a2c6dd1d33.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Bathroom</p>
+      </div>
+      <div class="col-md-2 col-6 text-center product-hover">
+        <img src="https://i.pinimg.com/1200x/24/8c/9e/248c9e15d066347ba7e68ebfc675f610.jpg" class="img-fluid rounded shadow-sm mb-2" />
+        <p class="small fw-bold">Wall Art</p>
+      </div>
+    </div>
+    <div class="row g-4 mt-5" id="dynamicData">
+      <!-- Cards from JSON will be injected here by JS -->
+    </div>
+
+    <!-- Completed Projects Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-4 text-center">Completed Projects</h2>
+        <div class="row g-4" id="completedProjects">
+          <!-- Demo data will be injected by JS -->
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer mt-5 pt-4 pb-3" style="background-color: #e9ecef; color: #111;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
+        <img src="HomeStyler/imgs/logo.jpeg" alt="HomeStyler Logo" style="height:40px;vertical-align:middle;" class="me-2">
+        <span class="fw-bold h5 align-middle">HomeStyler</span>
+      </div>
+      <div class="col-md-4 mb-3 mb-md-0 text-center">
+        <a href="HomeStyler/about.html" class="text-dark text-decoration-none mx-2">About</a>
+        <a href="HomeStyler/contact.html" class="text-dark text-decoration-none mx-2">Contact</a>
+        <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+        <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#newsletterModal">Newsletter</a>
+        <a href="HomeStyler/products.html" class="text-dark text-decoration-none mx-2">Products</a>
+      </div>
+      <div class="col-md-4 text-center text-md-end">
+        <span class="me-2">Follow us:</span>
+        <a href="#" class="mx-1" title="Facebook"><i class="fab fa-facebook-f fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Instagram"><i class="fab fa-instagram fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Twitter"><i class="fab fa-twitter fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Pinterest"><i class="fab fa-pinterest fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="LinkedIn"><i class="fab fa-linkedin fa-lg" style="color:#111;"></i></a>
+        <!-- Only one email icon retained for Contact -->
+      </div>
+    </div>
+    <hr class="bg-white my-3">
+    <div class="row">
+      <div class="col text-center">
+        <small class="text-dark">&copy; 2025 HomeStyler. All rights reserved.</small>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Privacy Policy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your privacy is important to us. We do not share your personal information with third parties. For more details, contact our support team.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Contact & Support</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="contactName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="contactName" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="contactEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactMessage" class="form-label">Message</label>
+            <textarea class="form-control" id="contactMessage" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Newsletter Modal -->
+<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newsletterModalLabel">Subscribe to Newsletter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="newsletterEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="newsletterEmail" required>
+          </div>
+          <button type="submit" class="btn btn-success">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS (Copy from previous reply) -->
+<!-- Paste the 3 modals from previous response here if not done already -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="HomeStyler/js/script.js"></script>
+<script>
+// Demo data for HomeStyler Project Process
+const projectProcessData = [
+  {
+    step: "Consultation & Planning",
+    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800",
+    desc: "We meet with clients to understand their needs and vision, then create a tailored plan."
+  },
+  {
+    step: "Design & Visualization",
+    image: "https://images.unsplash.com/photo-1503389152951-9c3d8e1e8d43?w=800",
+    desc: "Our designers craft detailed concepts and 3D visualizations for approval."
+  },
+  {
+    step: "Execution & Management",
+    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800",
+    desc: "We manage the project, coordinate with vendors, and ensure quality at every stage."
+  },
+  {
+    step: "Final Reveal & Support",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800",
+    desc: "We present the finished space and offer ongoing support for our clients."
+  }
+];
+document.addEventListener('DOMContentLoaded', function() {
+  var processContainer = document.getElementById('projectProcess');
+  if (processContainer) {
+    processContainer.innerHTML = projectProcessData.map(item => `
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="${item.image}" class="card-img-top" alt="${item.step}" style="height:180px;object-fit:cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-primary">${item.step}</h5>
+            <p class="card-text text-muted">${item.desc}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+});
+// Demo data for Completed Projects
+const completedProjectsData = [
+  {
+    title: "Modern Apartment Renovation",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+    desc: "A full renovation with open concept living and custom furniture.",
+    location: "Karachi, Pakistan"
+  },
+  {
+    title: "Luxury Villa Interior",
+    image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+    desc: "Elegant villa with premium finishes and designer lighting.",
+    location: "Lahore, Pakistan"
+  },
+  {
+    title: "Minimalist Workspace",
+    image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=800",
+    desc: "Clean lines, natural light, and functional design for productivity.",
+    location: "Islamabad, Pakistan"
+  },
+  {
+    title: "Family Home Makeover",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800",
+    desc: "Bright, welcoming spaces for a growing family.",
+    location: "Hyderabad, Pakistan"
+  }
+];
+document.addEventListener('DOMContentLoaded', function() {
+  var completedContainer = document.getElementById('completedProjects');
+  if (completedContainer) {
+    completedContainer.innerHTML = completedProjectsData.map(item => `
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="${item.image}" class="card-img-top" alt="${item.title}" style="height:200px;object-fit:cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-success">${item.title}</h5>
+            <p class="card-text text-muted">${item.desc}</p>
+            <span class="badge bg-secondary">${item.location}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+});
+</script>
+  <script>
+    // Improved auto-typed text effect for hero section (type, erase, retype)
+    const mainPhrases = [
+      "Discover Home Interiors",
+      "Create Your Dream Space",
+      "Modern Living Room Ideas",
+      "Pakistani Designer Inspiration",
+      "Browse Trending Products"
+    ];
+    const subPhrases = [
+      "Your dream space is just a click away",
+      "Find styles, designers, and products",
+      "Transform your home with expert tips",
+      "Explore unique decor and furniture",
+      "Get inspired by modern designs"
+    ];
+    let mainIndex = 0, subIndex = 0;
+    const typedText = document.getElementById('typedText');
+    const typedCursor = document.getElementById('typedCursor');
+    const typedSub = document.getElementById('typedSub');
+
+    function typeText(text, el, speed, cb) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          el.textContent += text[i++];
+          setTimeout(type, speed);
+        } else if (cb) {
+          setTimeout(cb, 800);
+        }
+      }
+      type();
+    }
+
+    function eraseText(el, speed, cb) {
+      function erase() {
+        if (el.textContent.length > 0) {
+          el.textContent = el.textContent.slice(0, -1);
+          setTimeout(erase, speed);
+        } else if (cb) {
+          setTimeout(cb, 300);
+        }
+      }
+      erase();
+    }
+
+    function cycleTyped() {
+      typeText(mainPhrases[mainIndex], typedText, 70, function() {
+        typeText(subPhrases[subIndex], typedSub, 40, function() {
+          setTimeout(function() {
+            eraseText(typedSub, 25, function() {
+              eraseText(typedText, 35, function() {
+                mainIndex = (mainIndex + 1) % mainPhrases.length;
+                subIndex = (subIndex + 1) % subPhrases.length;
+                cycleTyped();
+              });
+            });
+          }, 1200);
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', cycleTyped);
+    // Blinking cursor
+    setInterval(() => {
+      typedCursor.style.opacity = typedCursor.style.opacity === '0' ? '1' : '0';
+    }, 500);
+  </script>
+  <script>
+    // Show featured designs modal on button click
+    document.getElementById('showFeaturedBtn').addEventListener('click', function() {
+      var modal = new bootstrap.Modal(document.getElementById('featuredModal'));
+      modal.show();
+    });
+
+    // Show designers modal on button click
+    document.getElementById('showDesignersBtn').addEventListener('click', function() {
+      var modal = new bootstrap.Modal(document.getElementById('designersModal'));
+      modal.show();
+    });
+
+    // Show products modal on button click
+    document.getElementById('showProductsBtn').addEventListener('click', function() {
+      var modal = new bootstrap.Modal(document.getElementById('productsModal'));
+      modal.show();
+    });
+
+    // Demo data for featured section
+    const featuredDemo = [
+      {
+        title: 'Modern Living Room',
+        image: 'https://cdn.pixabay.com/photo/2016/08/26/15/06/home-1622401_1280.jpg',
+        desc: 'Elegant & Cozy with natural light.'
+      },
+      {
+        title: 'Minimalist Kitchen',
+        image: 'https://cdn.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg',
+        desc: 'Functional space with modern appliances.'
+      },
+      {
+        title: 'Relaxing Bedroom',
+        image: 'https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg',
+        desc: 'Soft colors and comfortable bedding.'
+      },
+      {
+        title: 'Clean Bathroom',
+        image: 'https://cdn.pixabay.com/photo/2024/07/17/07/26/bathroom-8900752_1280.jpg',
+        desc: 'Minimal design with fresh ambiance.'
+      }
+    ];
+    // Demo data for designers modal
+    const designersDemo = [
+      {
+        name: 'Sadaf Malik',
+        image: 'https://i.pinimg.com/736x/dd/fc/ac/ddfcac65a67bc5ed50019958e99acfdd.jpg',
+        style: 'Modern & Minimalist',
+        rating: '★★★★★'
+      },
+      {
+        name: 'Ali Khan',
+        image: 'https://randomuser.me/api/portraits/men/45.jpg',
+        style: 'Traditional & Contemporary Fusion',
+        rating: '★★★★☆'
+      },
+      {
+        name: 'Mariam Shah',
+        image: 'https://i.pinimg.com/1200x/1e/5a/e4/1e5ae4c254df31ecd2924c62fe8f4c13.jpg',
+        style: 'Elegant & Classic',
+        rating: '★★★★★'
+      }
+    ];
+    // Demo data for products modal
+    const productsDemo = [
+      {
+        name: 'Comfort Sofa',
+        image: 'https://i.pinimg.com/1200x/c9/2a/57/c92a57d9ace58698b4b2c1e242b7fa5c.jpg',
+        category: 'Furniture',
+        price: '$499'
+      },
+      {
+        name: 'Wooden Table Lamp',
+        image: 'https://i.pinimg.com/736x/c8/15/db/c815db57fbf91172f71f95211b62c0db.jpg',
+        category: 'Lighting',
+        price: '$99'
+      },
+      {
+        name: 'Round Wall Mirror',
+        image: 'https://i.pinimg.com/1200x/79/99/3c/79993cacff1fd006470e046255d9d30d.jpg',
+        category: 'Decor',
+        price: '$129'
+      },
+      {
+        name: 'Classic Bookshelf',
+        image: 'https://i.pinimg.com/736x/a9/4b/bd/a94bbd2e793065d4893a2a4a348a393f.jpg',
+        category: 'Furniture',
+        price: '$149'
+      },
+      {
+        name: 'Pendant Light',
+        image: 'https://i.pinimg.com/1200x/e4/f5/ce/e4f5cecb2100f6cbb9b0e4b22ec5712a.jpg',
+        category: 'Lighting',
+        price: '$79'
+      },
+      {
+        name: 'Wall Art',
+        image: 'https://i.pinimg.com/1200x/d2/3f/a4/d23fa4755f08768acebb1e444e108821.jpg',
+        category: 'Decor',
+        price: '$59'
+      }
+    ];
+    document.addEventListener('DOMContentLoaded', function() {
+      var featuredContainer = document.getElementById('featuredDemoData');
+      if (featuredContainer) {
+        featuredContainer.innerHTML = featuredDemo.map(item => `
+          <div class="col-md-3">
+            <div class="card h-100 shadow-sm">
+              <img src="${item.image}" class="card-img-top" alt="${item.title}">
+              <div class="card-body">
+                <h5 class="card-title">${item.title}</h5>
+                <p class="card-text text-muted small">${item.desc}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+      var designersContainer = document.getElementById('designersDemoData');
+      if (designersContainer) {
+        designersContainer.innerHTML = designersDemo.map(item => `
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center">
+              <img src="${item.image}" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px; height:120px; object-fit:cover;" alt="${item.name}">
+              <div class="card-body">
+                <h5 class="card-title">${item.name}</h5>
+                <p class="text-muted small">${item.style}</p>
+                <p class="text-warning">${item.rating}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+      var productsContainer = document.getElementById('productsDemoData');
+      if (productsContainer) {
+        productsContainer.innerHTML = productsDemo.map(item => `
+          <div class="col-md-4">
+            <div class="card shadow-sm" style="height:75%;">
+              <img src="${item.image}" class="card-img-top" alt="${item.name}" style="width:139.33px;height:139.33px;object-fit:cover;margin:auto;">
+              <div class="card-body">
+                <h5 class="card-title">${item.name}</h5>
+                <p class="card-text text-muted small">Category: ${item.category}</p>
+                <p class="fw-bold">${item.price}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+<script>
+  
+// Demo data embedded directly for instant display
+const demoData = [
+  {
+    "title": "Home Office Inspiration",
+    "image": "https://images.unsplash.com/photo-1455994972514-4624f7f224a7?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800",
+    "description": "Modern workspace with natural light and minimalist decor.",
+    "category": "Workspace"
+  },
+  {
+    "title": "Cozy Reading Nook",
+    "image": "https://images.unsplash.com/photo-1602506860730-b690f1a6f662?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800",
+    "description": "A comfy chair, warm lighting, and shelves full of books.",
+    "category": "Living Room"
+  },
+  {
+    "title": "Elegant Dining Area",
+    "image": "https://plus.unsplash.com/premium_photo-1724707432836-aefde6bffb72?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800",
+    "description": "Spacious dining with a statement chandelier and wood accents.",
+    "category": "Dining"
+  },
+  {
+    "title": "Modern Furniture Collection",
+    "image": "https://i.pinimg.com/1200x/c1/d8/eb/c1d8eb28966488a9542d5a363088038a.jpg",
+    "description": "Explore trending furniture pieces for every room in your home.",
+    "category": "Products"
+  },
+  {
+    "title": "Lighting Ideas for Every Space",
+    "image": "https://i.pinimg.com/736x/33/e5/ea/33e5eafe84e82e9771295ef24b8ef771.jpg",
+    "description": "Creative lighting solutions to enhance ambiance and style.",
+    "category": "Products"
+  },
+  {
+    "title": "Contact & Support",
+    "image": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=800",
+    "description": "Reach out to our team for help, feedback, or collaboration.",
+    "category": "Contact"
+  }
+];
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('dynamicData');
+  if (!container) return;
+  container.innerHTML = demoData.map(item => `
+    <div class="col-md-4 col-sm-6">
+      <div class="card h-100 shadow-sm border-0" style="overflow:hidden;">
+        <img src="${item.image}" class="card-img-top" alt="${item.title}" style="height:220px;object-fit:cover;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-primary">${item.title}</h5>
+          <p class="card-text text-muted">${item.description}</p>
+          <span class="badge bg-info text-dark">${item.category}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+});
+</script>
+</body>
+</html>
