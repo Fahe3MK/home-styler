@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Home Office Inspiration",
+    "image": "https://images.unsplash.com/photo-1455994972514-4624f7f224a7?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "description": "Modern workspace with natural light and minimalist decor.",
+    "category": "Workspace"
+  },
+  {
+    "title": "Cozy Reading Nook",
+    "image": "https://images.unsplash.com/photo-1602506860730-b690f1a6f662?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dw=800",
+    "description": "A comfy chair, warm lighting, and shelves full of books.",
+    "category": "Living Room"
+  },
+  {
+    "title": "Elegant Dining Area",
+    "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800",
+    "description": "Spacious dining with a statement chandelier and wood accents.",
+    "category": "Dining"
+  },
+  {
+    "title": "Pakistani Designer Portfolio",
+    "image": "https://i.pinimg.com/736x/dd/fc/ac/ddfcac65a67bc5ed50019958e99acfdd.jpg",
+    "description": "Showcase of top Pakistani interior designers and their signature projects.",
+    "category": "Designers"
+  },
+  {
+    "title": "Modern Furniture Collection",
+    "image": "https://i.pinimg.com/1200x/c1/d8/eb/c1d8eb28966488a9542d5a363088038a.jpg",
+    "description": "Explore trending furniture pieces for every room in your home.",
+    "category": "Products"
+  },
+  {
+    "title": "Lighting Ideas for Every Space",
+    "image": "https://i.pinimg.com/736x/33/e5/ea/33e5eafe84e82e9771295ef24b8ef771.jpg",
+    "description": "Creative lighting solutions to enhance ambiance and style.",
+    "category": "Products"
+  },
+  {
+    "title": "Contact & Support",
+    "image": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=800",
+    "description": "Reach out to our team for help, feedback, or collaboration.",
+    "category": "Contact"
+  }
+]

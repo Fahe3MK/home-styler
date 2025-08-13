@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    /* Card hover animation */
+    .card {
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 10px 24px rgba(42,157,143,0.18);
+      z-index: 2;
+    }
+    /* Image bounce effect on hover */
+    .card-img-top {
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.08) translateY(-8px);
+      animation: bounce 0.4s;
+    }
+    @keyframes bounce {
+      0% { transform: scale(1.08) translateY(-8px); }
+      50% { transform: scale(1.15) translateY(-16px); }
+      100% { transform: scale(1.08) translateY(-8px); }
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Styles - HomeStyler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- FontAwesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">HomeStyler</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="styles.html">Styles</a></li>
+        <li class="nav-item"><a class="nav-link" href="designers.html">Designers</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Styles Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Explore Interior Design Styles</h2>
+    <div class="row g-4">
+
+      <!-- Style Cards with Modals Trigger -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#modernModal" style="cursor:pointer;">
+          <img src="https://cdn.pixabay.com/photo/2017/08/06/11/08/white-2591357_1280.jpg" class="card-img-top"  id="img" alt="Modern">
+          <div class="card-body">
+            <h5 class="card-title">Modern</h5>
+            <p class="card-text text-muted small">Clean lines, open spaces, and neutral tones for a sleek and minimal look.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#bohemianModal" style="cursor:pointer;">
+          <img src="https://cdn.pixabay.com/photo/2016/11/19/17/02/chinese-1840332_1280.jpg" class="card-img-top"  id="img" alt="Bohemian">
+          <div class="card-body">
+            <h5 class="card-title">Bohemian</h5>
+            <p class="card-text text-muted small">Artistic and colorful with a mix of textures, patterns, and vintage pieces.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#scandinavianModal" style="cursor:pointer;">
+          <img src="https://i.pinimg.com/736x/ad/2f/63/ad2f6382221b16710b7d2257aa48579b.jpg" class="card-img-top"  id="img" alt="Scandinavian">
+          <div class="card-body">
+            <h5 class="card-title">Scandinavian</h5>
+            <p class="card-text text-muted small">Light-filled spaces, wood accents, and a calming palette.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#industrialModal" style="cursor:pointer;">
+          <img src="https://i.pinimg.com/1200x/ce/36/85/ce36852fdb7c1c2b7a64a8a6b8234933.jpg" class="card-img-top"  id="img" alt="Industrial">
+          <div class="card-body">
+            <h5 class="card-title">Industrial</h5>
+            <p class="card-text text-muted small">Exposed bricks, metal frames, and raw materials for an urban vibe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#traditionalModal" style="cursor:pointer;">
+          <img src="https://i.pinimg.com/736x/8a/aa/0b/8aaa0b87c7fe252503febc1a7725d89b.jpg" class="card-img-top"  id="img" alt="Traditional">
+          <div class="card-body">
+            <h5 class="card-title">Traditional</h5>
+            <p class="card-text text-muted small">Elegant furnishings, rich colors, and classic symmetry.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#minimalistModal" style="cursor:pointer;">
+          <img src="https://i.pinimg.com/736x/f9/2b/2a/f92b2a376c96aaa00e97d72b1ab4d36e.jpg" class="card-img-top"  id="img" alt="Minimalist">
+          <div class="card-body">
+            <h5 class="card-title">Minimalist</h5>
+            <p class="card-text text-muted small">Less is more — focusing on essentials with clean design and open space.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modals for Each Style -->
+
+<!-- Modern Modal -->
+<div class="modal fade" id="modernModal" tabindex="-1" aria-labelledby="modernModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://cdn.pixabay.com/photo/2017/08/06/11/08/white-2591357_1280.jpg" class="img-fluid"  id="img" alt="Modern Style">
+    </div>
+  </div>
+</div>
+
+<!-- Bohemian Modal -->
+<div class="modal fade" id="bohemianModal" tabindex="-1" aria-labelledby="bohemianModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://cdn.pixabay.com/photo/2016/11/19/17/02/chinese-1840332_1280.jpg" class="img-fluid"  id="img" alt="Bohemian Style">
+    </div>
+  </div>
+</div>
+
+<!-- Scandinavian Modal -->
+<div class="modal fade" id="scandinavianModal" tabindex="-1" aria-labelledby="scandinavianModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://i.pinimg.com/736x/ad/2f/63/ad2f6382221b16710b7d2257aa48579b.jpg" class="img-fluid"  id="img" alt="Scandinavian Style">
+    </div>
+  </div>
+</div>
+
+<!-- Industrial Modal -->
+<div class="modal fade" id="industrialModal" tabindex="-1" aria-labelledby="industrialModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://i.pinimg.com/1200x/ce/36/85/ce36852fdb7c1c2b7a64a8a6b8234933.jpg" class="img-fluid"  id="img" alt="Industrial Style">
+    </div>
+  </div>
+</div>
+
+<!-- Traditional Modal -->
+<div class="modal fade" id="traditionalModal" tabindex="-1" aria-labelledby="traditionalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://i.pinimg.com/736x/8a/aa/0b/8aaa0b87c7fe252503febc1a7725d89b.jpg" class="img-fluid"  id="img" alt="Traditional Style">
+    </div>
+  </div>
+</div>
+
+<!-- Minimalist Modal -->
+<div class="modal fade" id="minimalistModal" tabindex="-1" aria-labelledby="minimalistModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <img src="https://i.pinimg.com/736x/f9/2b/2a/f92b2a376c96aaa00e97d72b1ab4d36e.jpg" class="img-fluid"  id="img" alt="Minimalist Style">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FOOTER -->
+<footer class="footer mt-5 pt-4 pb-3" style="background-color: #e9ecef; color: #111;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
+        <img src="/imgs/logo.jpeg" alt="HomeStyler Logo" style="height:40px;vertical-align:middle;" class="me-2">
+        <span class="fw-bold h5 align-middle">HomeStyler</span>
+      </div>
+      <div class="col-md-4 mb-3 mb-md-0 text-center">
+          <a href="about.html" class="text-dark text-decoration-none mx-2">About</a>
+          <a href="contact.html" class="text-dark text-decoration-none mx-2">Contact</a>
+          <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+          <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#newsletterModal">Newsletter</a>
+          <a href="products.html" class="text-dark text-decoration-none mx-2">Products</a>
+      </div>
+      <div class="col-md-4 text-center text-md-end">
+        <span class="me-2">Follow us:</span>
+          <a href="#" class="mx-1" title="Facebook"><i class="fab fa-facebook-f fa-lg" style="color:#111;"></i></a>
+          <a href="#" class="mx-1" title="Instagram"><i class="fab fa-instagram fa-lg" style="color:#111;"></i></a>
+          <a href="#" class="mx-1" title="Twitter"><i class="fab fa-twitter fa-lg" style="color:#111;"></i></a>
+          <a href="#" class="mx-1" title="Pinterest"><i class="fab fa-pinterest fa-lg" style="color:#111;"></i></a>
+          <a href="#" class="mx-1" title="LinkedIn"><i class="fab fa-linkedin fa-lg" style="color:#111;"></i></a>
+      </div>
+    </div>
+    <hr class="bg-white my-3">
+    <div class="row">
+      <div class="col text-center">
+          <small class="text-dark">&copy; 2025 HomeStyler. All rights reserved.</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODALS FOR EACH STYLE -->
+<!-- Modal Template: Copy & Modify per Style -->
+<div class="modal fade" id="modernModal" tabindex="-1" aria-labelledby="modernLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modernLabel">Modern Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Clean lines, open layouts, and neutral tones make this style perfect for those who love simplicity and elegance.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bohemianModal" tabindex="-1" aria-labelledby="bohemianLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bohemianLabel">Bohemian Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vibrant colors, global patterns, and eclectic charm define this expressive and artistic interior style.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="scandinavianModal" tabindex="-1" aria-labelledby="scandinavianLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scandinavianLabel">Scandinavian Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Known for its light tones, natural materials, and simplicity — perfect for cozy, functional spaces.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="industrialModal" tabindex="-1" aria-labelledby="industrialLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="industrialLabel">Industrial Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Industrial design features raw textures, high ceilings, exposed pipes, and neutral tones — perfect for lofts.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="traditionalModal" tabindex="-1" aria-labelledby="traditionalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="traditionalLabel">Traditional Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Inspired by 18th and 19th century designs, traditional style brings elegance, order, and timeless comfort.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="minimalistModal" tabindex="-1" aria-labelledby="minimalistLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="minimalistLabel">Minimalist Style</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This style focuses on simplicity, utility, and elegance — removing all excess for a serene, clean space.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

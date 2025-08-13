@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Card hover animation */
+    .card {
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 10px 24px rgba(42,157,143,0.18);
+      z-index: 2;
+    }
+    /* Image bounce effect on hover */
+    .card-img-top {
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.08) translateY(-8px);
+      animation: bounce 0.4s;
+    }
+    @keyframes bounce {
+      0% { transform: scale(1.08) translateY(-8px); }
+      50% { transform: scale(1.15) translateY(-16px); }
+      100% { transform: scale(1.08) translateY(-8px); }
+    }
+</style>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">HomeStyler</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="styles.html">Styles</a></li>
+          <li class="nav-item"><a class="nav-link" href="designers.html">Designers</a></li>
+          <li class="nav-item"><a class="nav-link" href="featured-designs.html">View Featured Designs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Filter -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Interior Products</h2>
+
+      <!-- Search Bar -->
+      <div class="row mb-4 justify-content-center">
+        <div class="col-md-6">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search products...">
+        </div>
+      </div>
+
+      <!-- Category Buttons -->
+      <div class="row mb-4 justify-content-center">
+        <div class="col-auto">
+          <button class="btn btn-outline-dark filter-btn mx-1" data-category="all">All</button>
+          <button class="btn btn-outline-dark filter-btn mx-1" data-category="Furniture">Furniture</button>
+          <button class="btn btn-outline-dark filter-btn mx-1" data-category="Lighting">Lighting</button>
+          <button class="btn btn-outline-dark filter-btn mx-1" data-category="Decor">Decor</button>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="row g-4" id="productList">
+        <!-- Product 1 -->
+        <div class="col-md-4 mb-4 product-card " id="comfort-sofa" data-name="Sofa" data-category="Furniture"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Comfort Sofa - $499">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/1200x/c9/2a/57/c92a57d9ace58698b4b2c1e242b7fa5c.jpg" class="card-img-top"  id="img" alt="Sofa">
+            <div class="card-body">
+              <h5 class="card-title">Comfort Sofa</h5>
+              <p class="card-text">Soft beige sofa perfect for any living room.</p>
+              <p class="text-muted small">Category: Furniture</p>
+              <p class="fw-bold">$499</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-4 mb-4 product-card" data-name="Lamp" data-category="Lighting"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Wooden Table Lamp - $99">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/736x/c8/15/db/c815db57fbf91172f71f95211b62c0db.jpg" class="card-img-top"  id="img" alt="Lamp">
+            <div class="card-body">
+              <h5 class="card-title">Wooden Table Lamp</h5>
+              <p class="card-text">Warm lighting with a rustic finish.</p>
+              <p class="text-muted small">Category: Lighting</p>
+              <p class="fw-bold">$99</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-4 mb-4 product-card" data-name="Mirror" data-category="Decor"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Round Wall Mirror - $129">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/1200x/79/99/3c/79993cacff1fd006470e046255d9d30d.jpg" class="card-img-top"  id="img" alt="Mirror">
+            <div class="card-body">
+              <h5 class="card-title">Round Wall Mirror</h5>
+              <p class="card-text">Stylish mirror with gold frame.</p>
+              <p class="text-muted small">Category: Decor</p>
+              <p class="fw-bold">$129</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="col-md-4 mb-4 product-card" data-name="Bookshelf" data-category="Furniture"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Classic Bookshelf - $149">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/736x/a9/4b/bd/a94bbd2e793065d4893a2a4a348a393f.jpg" class="card-img-top"  id="img" alt="Bookshelf">
+            <div class="card-body">
+              <h5 class="card-title">Classic Bookshelf</h5>
+              <p class="card-text">Stylish wooden shelf for books and décor.</p>
+              <p class="text-muted small">Category: Furniture</p>
+              <p class="fw-bold">$149</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="col-md-4 mb-4 product-card" data-name="Pendant Light" data-category="Lighting"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Pendant Light - $79">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/1200x/e4/f5/ce/e4f5cecb2100f6cbb9b0e4b22ec5712a.jpg" class="card-img-top"  id="img" alt="Pendant Light">
+            <div class="card-body">
+              <h5 class="card-title">Pendant Light</h5>
+              <p class="card-text">Warm ambient lighting for dining or living spaces.</p>
+              <p class="text-muted small">Category: Lighting</p>
+              <p class="fw-bold">$79</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="col-md-4 mb-4 product-card" data-name="Wall Art" data-category="Decor"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Abstract Wall Art - $59">
+          <div class="card h-100 shadow-sm">
+            <img src="https://i.pinimg.com/1200x/d2/3f/a4/d23fa4755f08768acebb1e444e108821.jpg" class="card-img-top"  id="img" alt="Wall Art">
+            <div class="card-body">
+              <h5 class="card-title">Abstract Wall Art</h5>
+              <p class="card-text">Modern art to elevate your wall design.</p>
+              <p class="text-muted small">Category: Decor</p>
+              <p class="fw-bold">$59</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<!-- FOOTER -->
+<footer class="footer mt-5 pt-4 pb-3" style="background-color: #e9ecef; color: #111;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
+        <img src="/imgs/logo.jpeg" alt="HomeStyler Logo" style="height:40px;vertical-align:middle;" class="me-2">
+        <span class="fw-bold h5 align-middle">HomeStyler</span>
+      </div>
+      <div class="col-md-4 mb-3 mb-md-0 text-center">
+        <a href="about.html" class="text-dark text-decoration-none mx-2">About</a>
+        <a href="contact.html" class="text-dark text-decoration-none mx-2">Contact</a>
+        <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+        <a href="#" class="text-dark text-decoration-none mx-2" data-bs-toggle="modal" data-bs-target="#newsletterModal">Newsletter</a>
+        <a href="products.html" class="text-dark text-decoration-none mx-2">Products</a>
+      </div>
+      <div class="col-md-4 text-center text-md-end">
+        <span class="me-2">Follow us:</span>
+        <a href="#" class="mx-1" title="Facebook"><i class="fab fa-facebook-f fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Instagram"><i class="fab fa-instagram fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Twitter"><i class="fab fa-twitter fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="Pinterest"><i class="fab fa-pinterest fa-lg" style="color:#111;"></i></a>
+        <a href="#" class="mx-1" title="LinkedIn"><i class="fab fa-linkedin fa-lg" style="color:#111;"></i></a>
+      </div>
+    </div>
+    <hr class="bg-white my-3">
+    <div class="row">
+      <div class="col text-center">
+        <small class="text-dark">&copy; 2025 HomeStyler. All rights reserved.</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Bootstrap & Filter Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Enable Bootstrap Tooltips -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    });
+  </script>
+
+  <!-- Category Filter & Search -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        productCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          card.style.display = (category === 'all' || cardCategory === category) ? 'block' : 'none';
+        });
+      });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      productCards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
